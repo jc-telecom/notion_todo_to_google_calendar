@@ -1,7 +1,0 @@
-env.nosync/
-.env
-__pycache__/
-credentials.py
-token.json
-meta.json
-google_credentials.json
