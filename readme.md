@@ -1,4 +1,4 @@
-The objective of this project is to create synchronize any Notion Database to a Google Calendar Agenda
+The objective of this project is to synchronize any Notion Database to a Google Calendar Agenda
 
 # Project architecture
 
@@ -30,6 +30,12 @@ Each property contains information that could be used for the summary, the descr
 ## Add, delete or update the event
 
 # Getting started
+
+## Setup Notion integration
+
+## Setup Google Calendar API
+
+## `Setup project_setting.json file`
 
 # Exemple
 
