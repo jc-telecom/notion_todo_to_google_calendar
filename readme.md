@@ -31,10 +31,6 @@ Each property contains information that could be used for the summary, the descr
 
 # Getting started
 
-## Notifications :
-
-https://jorricks.github.io/macos-notifications/faq/
-
 # Exemple
 
 # Schema to explain how it works
