@@ -1,0 +1,74 @@
+{
+
+  "day_rev_limit": 5,
+
+  "properties.scheme": {
+    "name": {
+      "property_path": ["Nom", "title", "plain_text"],
+      "information_type": "summary",
+      "order": 2
+    },
+    "date_start": {
+      "property_path": ["Date", "date", "start"],
+      "information_type": "date_start"
+    },
+    "date_end": { 
+      "property_path": ["Date", "date", "end"],
+      "information_type": "date_end"
+    },
+    "project": {
+      "property_path": ["Projet", "multi_select", "name"],
+      "information_type": "summary",
+      "order": 1,
+      "character_limit": 1, 
+      "prefix": "[", 
+      "suffix": "]", 
+      "title": "Projet : ",
+      "show_title": true, 
+      "inner_separators": ""
+    },
+    "importance": {
+      "property_path": ["Importance", "select", "name"],
+      "information_type": "description", 
+      "title": "Importance :",
+      "show_title": true, 
+      "order": 1
+
+    },
+    "notes": {
+      "property_path": ["Notes", "rich_text", "plain_text"],
+      "information_type": "description",
+      "title": "Notes :",
+      "show_title": true,
+      "order": 3
+    },
+    "status": {
+      "property_path": ["État", "status", "name"],
+      "information_type": "description", 
+      "title": "Statut :",
+      "show_title": true, 
+      "order": 2
+    }
+  }, 
+
+  "fields.format":{
+    "summary": {
+      "prefix": "",
+      "suffix": "",
+      "inner_separators":" "
+    }, 
+    "description": {
+      "prefix": "",
+      "suffix": "",
+      "inner_separators":"\n"
+    }
+  }, 
+
+
+  "status.colors": {
+    "En cours": 7,
+    "Terminé": 2,
+    "Pas commencé": 4,
+    "Archivé": 2
+  }
+}

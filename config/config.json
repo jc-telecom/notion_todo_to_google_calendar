@@ -1,0 +1,3 @@
+{
+    "properties.mandatory": ["name", "date_start", "date_end"]
+}
