@@ -15,7 +15,7 @@ def show_notification(nb_new_events, nb_updated_events, nb_deleted_events):
 
     # Charger l'image
     # Remplacez par le chemin vers votre image
-    image = tk.PhotoImage(file="assets/icon.png")
+    image = tk.PhotoImage(file="assets/pop_up_icon.png")
 
     # Redimensionner l'image
     # Remplacez 2 par le facteur de sous-échantillonnage que vous souhaitez utiliser
