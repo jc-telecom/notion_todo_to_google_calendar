@@ -147,6 +147,6 @@ Each property must contain `property_path` which is the path inside the properti
 | `show_title`       | if the title must be printed before the retrieved value                                           | _boolean_                                                                    |
 | `inner_separators` | the inner separators is the retrieved values is a list (in the case of multi select for instance) | _string_                                                                     |
 
-## Run app.py file
+## 6. Run app.py file
 
 Then just run the `app.py` file. The number of events added, deleted or updated are displayed in a push notification at the end of the script. The result is also stored in the `meta.json` file.
