@@ -1,42 +1,32 @@
-from scripts.notification import show_notification
-from tools.utils import update_meta_file
-from scripts.project_setup import retrieve_starting_date
-from scripts.notion_API_entries import get_notion_entries
-from scripts.notion_entry_properties_scheme import retrieve_property_scheme, retrieve_field_format
-from scripts.google_event import db_entries_to_google_events
 from scripts.google_calendar_API import CalendarAPI
-from datetime import datetime
+from scripts.read_settings import read_project_settings
+from scripts.notion_API import get_notion_entries
+from scripts.google_event import CalendarEvent
+from tools.utils import update_meta_file
+from scripts.notification import show_notification
 import os
 from dotenv import load_dotenv
 load_dotenv()
 
+# Retrieve the starting date, properties scheme and fields formats
+starting_date, properties_scheme, fields_formats = read_project_settings()
 
-# Retrieve the starting date
-starting_date = retrieve_starting_date()
-
-# Retrieve the properties scheme
-properties_scheme = retrieve_property_scheme()
-
-# Retrieve the events fields formats
-fields_formats = retrieve_field_format()
+date_col_name = [key for key, value in properties_scheme.items(
+) if getattr(value, 'col_type') == "date"][0]
 
 # Retrieve the notion database entries
 filters = {
-    "property": "Date",
+    "property": date_col_name,
     "date": {
         "after": starting_date
     }}
 notion_db_entries = get_notion_entries(
     os.environ['DATABASE_ID'], filters=filters)
 
-# Convert db entries to google events
-events = db_entries_to_google_events(
-    notion_db_entries, properties_scheme, fields_formats)
+events = CalendarEvent.db_entries_to_google_events(
+    CalendarEvent, notion_db_entries, properties_scheme, fields_formats)
 
-# Connect to google calendar API
 google_calendar = CalendarAPI(os.environ['GOOGLE_CALENDAR_ID'])
-
-# Retrieve existing events from google calendar
 google_past_events_dict = CalendarAPI.get_events(
     google_calendar, starting_date)
 
@@ -60,7 +50,7 @@ else:
     for key, event in events.items():
         if key in google_past_events_dict:
             prev_event = google_past_events_dict[key]
-            if event.summary != prev_event.summary or event.description != prev_event.description or event.colorId != prev_event.colorId or event.date_start.date != prev_event.date_start.date or event.date_end.date != prev_event.date_end.date:
+            if event.summary != prev_event.summary or event.description != prev_event.description or event.date_start.date != prev_event.date_start.date or event.date_end.date != prev_event.date_end.date:
                 update_events[key] = event
 
 nb_new_events = len(new_events) if new_events is not None else 0

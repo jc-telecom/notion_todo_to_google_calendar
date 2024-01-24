@@ -103,7 +103,7 @@ To know which information to retrieve from the database and how to use it you mu
       "suffix": "]",
       "title": "Projet : ",
       "show_title": true,
-      "inner_separators": ""
+      "inner_separator": ""
     },
     "importance": {
       "property_path": ["Importance", "select", "name"],
@@ -145,7 +145,7 @@ Each property must contain `property_path` which is the path inside the properti
 | `suffix`           | Text to be added after the retrieved value                                                        | _string_                                                                     |
 | `title`            | The title of the retrieved value                                                                  | _string_                                                                     |
 | `show_title`       | if the title must be printed before the retrieved value                                           | _boolean_                                                                    |
-| `inner_separators` | the inner separators is the retrieved values is a list (in the case of multi select for instance) | _string_                                                                     |
+| `inner_separator`  | the inner separators is the retrieved values is a list (in the case of multi select for instance) | _string_                                                                     |
 
 ## 6. Run app.py file
 

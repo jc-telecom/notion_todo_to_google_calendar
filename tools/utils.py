@@ -5,6 +5,15 @@ import json
 import traceback
 
 
+def check_attributes(attr, attr_name, attr_type, default_value):
+    if attr is None:
+        return default_value
+    if not isinstance(attr, attr_type):
+        raise ValueError(
+            f"{attr_name} must be {attr_type} : {attr} passed")
+    return attr
+
+
 def property_value_from_path(dict_obj, path, in_separator=" "):
     if not isinstance(path, list):
         path = [path]

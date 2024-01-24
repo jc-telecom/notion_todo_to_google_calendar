@@ -1,74 +1,76 @@
 {
-
-  "day_rev_limit": 5,
+  "days_before_today": 5,
 
   "properties.scheme": {
-    "name": {
-      "property_path": ["Nom", "title", "plain_text"],
-      "information_type": "summary",
-      "order": 2
+    "Nom": {
+      "col_type": "title",
+      "print_to": "summary",
+      "order": 3,
+      "title": "Tâche",
+      "title_suffix": " : ",
+      "title_prefix": "",
+      "show_title": false
     },
-    "date_start": {
-      "property_path": ["Date", "date", "start"],
-      "information_type": "date_start"
-    },
-    "date_end": { 
-      "property_path": ["Date", "date", "end"],
-      "information_type": "date_end"
-    },
-    "project": {
-      "property_path": ["Projet", "multi_select", "name"],
-      "information_type": "summary",
-      "order": 1,
-      "character_limit": 1, 
-      "prefix": "[", 
-      "suffix": "]", 
-      "title": "Projet : ",
-      "show_title": true, 
-      "inner_separators": ""
-    },
-    "importance": {
-      "property_path": ["Importance", "select", "name"],
-      "information_type": "description", 
-      "title": "Importance :",
-      "show_title": true, 
+
+    "Projet": {
+      "col_type": "multi_select",
+      "print_to": "summary",
+      "prefix": "[",
+      "suffix": "]",
+      "character_limit": 1,
       "order": 1
-
     },
-    "notes": {
-      "property_path": ["Notes", "rich_text", "plain_text"],
-      "information_type": "description",
-      "title": "Notes :",
+
+    "Importance": {
+      "col_type": "select",
+      "print_to": "description",
+      "order": 2,
+      "title": "Importance : ",
+      "show_title": true
+    },
+    "État": {
+      "col_type": "status",
+      "print_to": "description",
+      "order": 1,
+      "title": "État : ",
+      "show_title": true
+    },
+    "Date": {
+      "col_type": "date"
+    },
+
+    "Notes": {
+      "col_type": "rich_text",
+      "print_to": "description",
+      "order": 3,
+      "title": "Notes : ",
+      "show_title": true
+    },
+    "Sous-élément": {
+      "col_type": "relation",
+      "print_to": "summary",
+      "order": 2,
+      "suffix": " - "
+    },
+    "élément parent": {
+      "col_type": "relation",
+      "print_to": "description",
+      "order": 5,
       "show_title": true,
-      "order": 3
-    },
-    "status": {
-      "property_path": ["État", "status", "name"],
-      "information_type": "description", 
-      "title": "Statut :",
-      "show_title": true, 
-      "order": 2
+      "title": "Sous-tâches : "
     }
-  }, 
+  },
 
-  "fields.format":{
+  "fields.format": {
     "summary": {
       "prefix": "",
       "suffix": "",
-      "inner_separators":" "
-    }, 
+      "inner_separator": " "
+    },
     "description": {
       "prefix": "",
       "suffix": "",
-      "inner_separators":"\n"
+      "inner_separator": "\n"
     }
-  }, 
-
-
-  "status.colors": {
-    "En cours": 7,
-    "Terminé": 2,
-    "Pas commencé": 4,
-    "Archivé": 2
   }
 }

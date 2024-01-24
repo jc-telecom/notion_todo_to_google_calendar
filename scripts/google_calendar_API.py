@@ -113,12 +113,6 @@ class CalendarAPI:
             except HttpError as error:
                 self._extracted_from_send_event_6(error, calendar_event_dic)
 
-    # TODO Rename this here and in `add_event` and `send_event`
-    def _extracted_from_send_event_6(self, error, arg1):
-        print("An error occurred: ", error)
-        print(arg1)
-        sys.exit()
-
     def get_event(self, event_id):
         try:
             return (
@@ -152,7 +146,7 @@ class CalendarAPI:
                     start=event["start"].get(
                         "dateTime", event["start"].get("date")),
                     end=event["end"].get("dateTime", event["end"].get("date")),
-                    description=event["description"],
+                    description=event.get("description"),
                     colorId=event.get("colorId"),
                 )
                 for event in events

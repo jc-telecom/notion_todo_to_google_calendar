@@ -1,29 +1,21 @@
+from scripts.db_entries import DbEntry
+from tools.utils import property_value_from_path
 import os
 import requests
 from dotenv import load_dotenv
 load_dotenv()
 
 
-# Declare the default database entry we shoud receive from notion API
-class DbEntry:
-    def __init__(self, id, created_time, last_edited_time, properties, url, created_by=None, last_edited_by=None):
-        self.id = id
-        self.created_time = created_time
-        self.last_edited_time = last_edited_time
-        self.properties = properties
-        self.url = url
-        self.created_by = created_by
-        self.last_edited_by = last_edited_by
+headers = {
+    "Authorization": "Bearer " + os.environ['NOTION_TOKEN'],
+    "Content-Type": "application/json",
+    "Notion-Version": "2022-06-28",
+}
 
 
 # Retrieve the database entries from notion AP
 def get_notion_entries(page_id, num_pages=None, filters=None):
 
-    headers = {
-        "Authorization": "Bearer " + os.environ['NOTION_TOKEN'],
-        "Content-Type": "application/json",
-        "Notion-Version": "2022-06-28",
-    }
     url = f"https://api.notion.com/v1/databases/{page_id}/query"
 
     get_all = num_pages is None
@@ -54,9 +46,22 @@ def get_notion_entries(page_id, num_pages=None, filters=None):
     }
 
 
-def get_page_name(page_id):
-    if page_id is None:
-        return None
-    url = f"https://api.notion.com/v1/pages/{page_id}/properties/title"
-    response = requests.get(url, headers=headers)
-    return response.json()
+class GetNotionInfo(object):
+    def get_page_name(self, page_id):
+        if page_id is None:
+            return None
+        url = f"https://api.notion.com/v1/pages/{page_id}/properties/title"
+        response = requests.get(url, headers=headers)
+        results = response.json().get("results")[0]
+        title = property_value_from_path(
+            results, ["title", "plain_text"], in_separator=" ")
+
+        print(title)
+        return title
+
+    def get_user_name(self, user_id):
+        if user_id is None:
+            return None
+        url = f"https://api.notion.com/v1/users/{user_id}"
+        response = requests.get(url, headers=headers)
+        return response.json().get("name")
