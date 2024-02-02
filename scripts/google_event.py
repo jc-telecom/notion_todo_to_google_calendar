@@ -1,6 +1,5 @@
 from tools.utils import property_value_from_path
 from scripts.notion_API import GetNotionInfo
-from scripts.notion_entry_properties_scheme import get_properties_from_db_entry
 from dateutil.parser import parse
 from datetime import datetime, timedelta, date
 import json

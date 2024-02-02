@@ -59,7 +59,7 @@ Each Notion database is different. The result received from the Notion API is a 
 
 Most information are stored in `properties`. To know how each property must be used, you need to fill in the `project_setting.json` file.
 
-### 5. Fill the `day_rev_limit`
+### a. Fill the `day_rev_limit`
 
 The `day_rev_limit` is the number of days prior to today whose data you want to retrieve.
 
@@ -74,7 +74,7 @@ The `day_rev_limit` is the number of days prior to today whose data you want to 
 
 ```
 
-### 6. Fill the `properties.scheme`
+### b. Fill the `properties.scheme`
 
 To know which information to retrieve from the database and how to use it you must fill the `properties.sheme`
 
@@ -96,6 +96,6 @@ Each property must contain `col_type` which is the type of property. [See docs](
 | `title_suffix`    | Text to be added after the title                                                                  | _string_                                                                                                                                                                       |
 | `inner_separator` | the inner separators is the retrieved values is a list (in the case of multi select for instance) | _string_                                                                                                                                                                       |
 
-## 7. Run app.py file
+## 5. Run app.py file
 
 Then just run the `app.py` file. The number of events added, deleted or updated are displayed in a push notification at the end of the script. The result is also stored in the `meta.json` file.

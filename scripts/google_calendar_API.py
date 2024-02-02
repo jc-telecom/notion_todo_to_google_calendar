@@ -76,7 +76,11 @@ class CalendarAPI:
             event = self.service.events().insert(calendarId=self.calendar_id,
                                                  body=event_json).execute()
         except HttpError as error:
-            self._extracted_from_send_event_6(error, event_json)
+            try:
+                self.update_event(event_json)
+            except HttpError as error2:
+                print("An error occurred: ", error, event_json)
+                print("An error occurred: ", error2, event_json)
 
     def delete_event(self, event_id):
         try:

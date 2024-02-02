@@ -56,7 +56,6 @@ class GetNotionInfo(object):
         title = property_value_from_path(
             results, ["title", "plain_text"], in_separator=" ")
 
-        print(title)
         return title
 
     def get_user_name(self, user_id):
